@@ -12,15 +12,16 @@
 ✅ Get a weather map of your current location\
 ✅ Access a 10-day weather forecast\
 ✅ View the US weather map\
+✅ Get your trip routes for four locations\
 ✅ And much more...
 
 ### Run via QR Code
 
-📷 **Scan the QR code to run `app_part`:**\
+📷 **Scan the QR code to run `app_mini`:**\
 [![qrcode-climateassistant-shinyapps-io.png](https://i.postimg.cc/15RKfLc1/qrcode-climateassistant-shinyapps-io.png)](https://postimg.cc/c6j3zkbF)
 
 ------------------------------------------------------------------------
 
 🎉 **Start using Weather Assistant now!**
 
-And Stars ⭐️⭐️⭐️⭐️⭐️ Please!
+If you like it, please give us stars ⭐️⭐️⭐️⭐️⭐️. Thank You for Using.
