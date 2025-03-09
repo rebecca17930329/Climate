@@ -4,7 +4,7 @@
 
 ### How to Run
 
--   Run `appe.r` to launch the full version (`app_whole`).
+-   Run `app.r` to launch the full version (`app_whole`).
 -   Run `app_mini.r`, use the [ShinyApps](https://climateassistant.shinyapps.io/shareapp/) link, or scan the QR code below to run `app_part`.
 
 ### Features
