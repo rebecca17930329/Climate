@@ -7,6 +7,7 @@ library(lubridate)
 library(osrm)
 library(sf)
 
+
 locations <- data.frame(
   name = c("Dallas", "San Diego", "San Francisco", "Denver", "Los Angeles", 
            "Atlanta", "Chicago", "Boston", "Phoenix", "New York", 
@@ -133,6 +134,9 @@ get_city_name <- function(lat, lon) {
   return("Unknown City")
 }
 
+sample_message <- "My wife likes going to the beach on Sunny days and I like going to parks on Sunny Days."
+
+
 
 ui <- navbarPage("Climate Assistant",
                  
@@ -147,11 +151,18 @@ ui <- navbarPage("Climate Assistant",
                                                              format(Sys.Date() + 0:6, 
                                                                     "%Y-%m-%d")),
                                           selected = 1),
+                              selectInput("prefer", "My Special Performance", 
+                                          choices = c("On sunny days, I don't want to carry an umbrella. And on rainy days, I want to carry an umbrella.", 
+                                                      "On sunny days, I want to carry an umbrella.",
+                                                      "On rainy days, I don't like carrying an umbrella; I love feeling the raindrops on my head."),
+                                          selected = "On sunny days, I don't want to take umbrella. And on rainy days, I want to carry an umbrella."),
+                              textInput("user_message", "Enter your Personal Performance:", ""),
                               actionButton("get_location", "Get My Location"),
+                              
                             ),
                             mainPanel(
                               h3("Climate Assistant for Current Location"),
-                              p("(Response time around 12 seconds and Please use in web browser)"),
+                              p("(Response time around 15 seconds and Please use in web browser)"),
                               leafletOutput("plot_map"),
                               tags$br(),
                               verbatimTextOutput("loc_climate_data"),
@@ -247,7 +258,7 @@ server <- function(input, output, session) {
   )
   
   response_text <- reactiveVal("")
-  
+  message_text <- reactiveVal("")
   
   observeEvent(input$user_location, {
     req(input$user_location)
@@ -283,7 +294,7 @@ server <- function(input, output, session) {
     
     
     prompt <- paste("give me dressing recommendation based on these climates: start with on",
-                    Sys.Date() + as.integer(input$day) - 1,"min tempreture",
+                    Sys.Date() + as.integer(input$day) - 1,"and my performances:", input$prefer,"and", input$user_message,"min tempreture",
                     l$min_temp, "max tempreture:", l$max_temp, "main weather", 
                     l$weather_main, "wind speed is", l$wind_speed,
                     "humidity is", l$humidity,"at",city)
